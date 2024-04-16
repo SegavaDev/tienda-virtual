@@ -39,6 +39,10 @@
         }
 }
 
+.inputsData {
+    height: 50px;
+}
+
 .btnLR {
     width: 150px;
     height: 50px;

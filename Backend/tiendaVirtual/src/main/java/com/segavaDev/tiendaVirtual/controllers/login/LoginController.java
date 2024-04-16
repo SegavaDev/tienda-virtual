@@ -1,6 +1,5 @@
 package com.segavaDev.tiendaVirtual.controllers.login;
 
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -15,13 +14,8 @@ public class LoginController {
 
     @GetMapping("/dashboard")
     public String dashboard() {
-        try {
-            return "redirect:/dashboard.html";
 
-        } catch (AccessDeniedException e) {
-            System.out.println(e.getMessage());
-            return "redirect:/error.html";
-        }
+            return "redirect:/dashboard.html";
     }
     
     
