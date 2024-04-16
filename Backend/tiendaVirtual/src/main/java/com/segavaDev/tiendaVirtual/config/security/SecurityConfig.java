@@ -29,13 +29,13 @@ public class SecurityConfig {
     };
 
     private final String[] AUTHENTICATED_PATHS = {
-        "/dashboard.html"
+            "/dashboard.html"
     };
 
     private final String[] WHITELIST_PATHS = {
-        "/",
-        "/login.html",
-        "/error"
+            "/",
+            "/login.html",
+            "/error/**"
     };
 
     private final String[] USER_PATHS = {
@@ -43,7 +43,7 @@ public class SecurityConfig {
     };
 
     private final String[] ADMIN_PATHS = {
-        "/api/v1/admin"
+            "/api/v1/admin"
     };
 
     @Autowired
@@ -63,9 +63,22 @@ public class SecurityConfig {
                 .requestMatchers(WHITELIST_PATHS).permitAll()
                 .anyRequest().permitAll())
                 .addFilterAfter(jwtValidationFilter, BasicAuthenticationFilter.class);
+        http.formLogin(
+                form -> form
+                        .loginPage("/login.html")
+                        .permitAll());
+        http.logout(
+                logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
+                        .permitAll());
+        http.exceptionHandling(
+                exceptionHandling -> exceptionHandling
+                        .accessDeniedPage("/error/acceso-denegado"));
+
         http.cors(cors -> corsConfigurationSource());
         http.csrf(csrf -> csrf.disable());
-        
+
         return http.build();
     }
 
