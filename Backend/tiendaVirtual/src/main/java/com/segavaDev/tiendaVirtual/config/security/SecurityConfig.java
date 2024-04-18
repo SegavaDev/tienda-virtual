@@ -29,13 +29,7 @@ public class SecurityConfig {
     };
 
     private final String[] AUTHENTICATED_PATHS = {
-            "/dashboard.html"
-    };
-
-    private final String[] WHITELIST_PATHS = {
-            "/",
-            "/login.html",
-            "/error/**"
+            "/dashboard/**"
     };
 
     private final String[] USER_PATHS = {
@@ -60,7 +54,6 @@ public class SecurityConfig {
                 .requestMatchers(ADMIN_PATHS).hasRole("ADMIN")
                 .requestMatchers(USER_PATHS).hasRole("USER")
                 .requestMatchers(SWAGGER_WHITELIST).permitAll()
-                .requestMatchers(WHITELIST_PATHS).permitAll()
                 .anyRequest().permitAll())
                 .addFilterAfter(jwtValidationFilter, BasicAuthenticationFilter.class);
         http.formLogin(
