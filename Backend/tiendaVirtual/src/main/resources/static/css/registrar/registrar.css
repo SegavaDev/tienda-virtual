@@ -14,29 +14,10 @@
 }
 
 .marco {
-    width: 100%;
-    height: 100vh;
-    background-color: var(--bg-white);
-
-        .marco__izquierda {
-            min-height: 50vh;
-        }
-
         .marco__titulo {
-            font: var(--font-principal);
             font-size: 3vw;
             text-align: center;
-        }
-
-        .marco__titulo2 {
-            font: var(--font-principal);
-            font-size: 3vw;
-        }
-
-        .marco__subTitulo {
-            font: var(--font-principal);
-            font-size: 1.5vw;
-            text-align: center;
+            margin-bottom: 3%;
         }
 }
 
@@ -44,7 +25,19 @@
     height: 50px;
 }
 
-.btnLR {
-    width: 150px;
-    height: 50px;
+.btnsRegEmpresa {
+    height: 18vh;
+}
+
+.formUser {
+    height: 60vh;
+}
+
+.btnsRegUsuario {
+    height: 10vh;
+    z-index: 1;
+}
+
+.marco__derecha > img {
+    width: 70%;
 }

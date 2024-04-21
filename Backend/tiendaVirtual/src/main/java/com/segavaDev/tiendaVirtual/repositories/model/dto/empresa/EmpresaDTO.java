@@ -12,7 +12,7 @@ public class EmpresaDTO {
 
     private long nit;
 
-    private long nombre;
+    private String nombre;
 
     private String direccion;
     

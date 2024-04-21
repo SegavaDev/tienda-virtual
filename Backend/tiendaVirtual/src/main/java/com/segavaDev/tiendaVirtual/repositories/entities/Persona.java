@@ -70,7 +70,11 @@ public abstract class Persona implements Serializable {
     @Column(nullable = false)
     private String passWord;
 
-    public Persona (long cedula, String p_nombre, String s_nombre, String p_apellido, String s_apellido, Rol rol, String email, String passWord) {
+    private String telefono;
+
+    private char sexo;
+
+    public Persona (long cedula, String p_nombre, String s_nombre, String p_apellido, String s_apellido, Rol rol, String email, String passWord, String telefono, char sexo) {
         super();
         this.cedula = cedula;
         this.p_nombre = p_nombre;
@@ -80,6 +84,8 @@ public abstract class Persona implements Serializable {
         this.rol = rol;
         this.email = email;
         this.passWord = passWord;
+        this.telefono = telefono;
+        this.sexo = sexo;
     }
 
     @Override

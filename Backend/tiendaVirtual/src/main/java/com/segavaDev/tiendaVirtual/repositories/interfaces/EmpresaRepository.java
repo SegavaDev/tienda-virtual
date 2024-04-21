@@ -10,7 +10,7 @@ public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
 
     Optional<Empresa> findByNit(long nit);
 
-    Optional<Empresa> findByNombre(long nombre);
+    Optional<Empresa> findByNombre(String nombre);
 
     Optional<Empresa> findByDireccion(String direccion);
     

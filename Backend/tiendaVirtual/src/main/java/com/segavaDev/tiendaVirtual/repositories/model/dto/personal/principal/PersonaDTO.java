@@ -31,5 +31,9 @@ public abstract class PersonaDTO implements Serializable {
     private String email;
 
     private String passWord;
+
+    private String telefono;
+
+    private char sexo;
     
 }

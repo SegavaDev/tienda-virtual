@@ -32,6 +32,10 @@ public class SecurityConfig {
             "/dashboard/**"
     };
 
+    private final String[] WHITE_LIST = {
+        "/api/v1/registrarse/"
+    };
+
     private final String[] USER_PATHS = {
             "/api/v1/user"
     };
@@ -53,6 +57,7 @@ public class SecurityConfig {
                 .requestMatchers(AUTHENTICATED_PATHS).authenticated()
                 .requestMatchers(ADMIN_PATHS).hasRole("ADMIN")
                 .requestMatchers(USER_PATHS).hasRole("USER")
+                .requestMatchers(WHITE_LIST).permitAll()
                 .requestMatchers(SWAGGER_WHITELIST).permitAll()
                 .anyRequest().permitAll())
                 .addFilterAfter(jwtValidationFilter, BasicAuthenticationFilter.class);

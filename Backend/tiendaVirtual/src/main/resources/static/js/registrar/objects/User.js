@@ -1,5 +1,15 @@
 class User {
 
+    cedula;
+    p_nombre;
+    s_nombre;
+    p_apellido;
+    s_apellido;
+    rol;
+    email;
+    passWord;
+    empresa;
+
     constructor(
         cedula,
         p_nombre,
@@ -9,7 +19,7 @@ class User {
         rol,
         email,
         passWord,
-        empresa
+        empresa = null
     ) {
 
         this.cedula = cedula,
@@ -20,9 +30,21 @@ class User {
         this.rol = rol,
         this.email = email,
         this.passWord = passWord,
-        this.empres = empresa
+        this.empresa = empresa
     }
 
-    
+    get empresa () {
+        return this.empresa;
+    }
+
+    get rol() {
+        return this.rol;
+    }
+
+    set empresa(nit) {
+        this.empresa = nit;
+    }
 
 }
+
+export default User;

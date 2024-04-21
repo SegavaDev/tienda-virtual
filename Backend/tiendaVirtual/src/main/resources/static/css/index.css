@@ -17,9 +17,14 @@
     width: 100%;
     height: 100vh;
     background-color: var(--bg-white);
+    position: relative;
 
         .marco__izquierda {
             min-height: 50vh;
+        }
+
+        .marco__derecha {
+            min-height: 45vh;
         }
 
         .marco__titulo {

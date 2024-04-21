@@ -32,7 +32,7 @@ public class Empresa implements Serializable {
     private long nit;
 
     @Column(unique = true, nullable = false)
-    private long nombre;
+    private String nombre;
 
     @Column(unique = true, nullable = false)
     private String direccion;
