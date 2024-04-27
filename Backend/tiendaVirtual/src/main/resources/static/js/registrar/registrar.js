@@ -1,16 +1,17 @@
 import { apiRegistro } from "./api/apiRegistroUser.js";
-import { cambiarTextBoton } from "./cambioSelectRol.js";
+import { asignarModalMensaje } from "./tools/asignarModal.js";
+import { cambiarTextBoton } from "./tools/cambioSelectRol.js";
 import { capitalizar } from "../utileria/capitalizar.js";
-import { colorError, mensajeError, errorPass } from "./ErroresForm.js";
-import { formCrearEmpresa } from "./templates/tempRegistrarEmpresa.js";
 import { formCrearUsuario } from "./templates/tempRegistrarUsuario.js";
-import { inyectarFooter } from "../template_global/Footer.js";
-import Empresa from "./objects/Empresa.js";
+import { lanzadorGlobal, lanzadorVerPassRegistrar } from "../utileria/lanzador.js";
+import { registrarEmpresa } from "./registrarEmpresa.js";
+import { validarData } from "./tools/validarData.js";
+import { validarDataUser } from "./tools/validarDataUser.js";
 import Registro from "./objects/Registro.js";
 import User from "./objects/User.js";
 
-// Inyectar footer
-inyectarFooter()
+// Lanzador global
+lanzadorGlobal();
 
 // Marco de formularios
 
@@ -28,34 +29,38 @@ marcoIzquierdo.insertAdjacentHTML("beforeend", formCrearUsuario());
 // Formulario usuario
 const formU = document.getElementById("formUser");
 
-// Boton cancelar
+// Botón cancelar
 document.getElementById("cancelar").addEventListener("click", (e) => {
     formU.remove();
 })
 
-const rol = document.getElementById("rol");
+const inputs = {
+    cedula: document.querySelector("input[name=cedula]"),
+    sexo: document.querySelector("select[name=sexo]"),
+    p_nombre: document.querySelector("input[name=p_nombre]"),
+    p_apellido: document.querySelector("input[name=p_apellido]"),
+    email: document.querySelector("input[name=email]"),
+    telefono: document.querySelector("input[type=tel]"),
+    rol: document.querySelector("select[name=rol]"),
+    password: document.querySelector("input[type=password]")
+}
 
-cambiarTextBoton(rol);
+// Validar cédula e mail
+validarDataUser([inputs.cedula, inputs.email]);
 
-formUser.addEventListener("submit", (e) => {
+// Cambia texto de botón submit dependiendo del rol
+cambiarTextBoton(inputs.rol);
+
+// Mostrar/ocultar password
+lanzadorVerPassRegistrar();
+
+formUser.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const formUser = new FormData(formU);
 
-    const sexo = document.getElementById("sexo");
-
-    const errSexo = colorError(sexo, formUser.get("sexo") === null) ? mensajeError(sexo.parentElement.parentElement, "🔴 Seleccione un sexo", sexo) : false;
-    const errRol = colorError(rol, formUser.get("rol") === null) ? mensajeError(rol.parentElement.parentElement, "🔴 Seleccione un rol", rol) : false;
-    const errPass = errorPass(document.querySelectorAll("input[type=password]"), formUser.get("password") !== formUser.get("password2")) ?
-        mensajeError(document.querySelector("input[type=password]").parentElement.parentElement.parentElement,
-            "🔴 Las contraseñas no coinciden", document.querySelector("input[type=password]")
-        ) : false;
-
-    if (
-        !errSexo &&
-        !errRol &&
-        !errPass
-    ) {
+    //Validar campos vacios
+    if (!validarData(formUser, inputs)) {
 
         const user = new User(
             formUser.get("cedula"),
@@ -65,48 +70,24 @@ formUser.addEventListener("submit", (e) => {
             capitalizar(formUser.get("s_apellido")),
             formUser.get("rol"),
             formUser.get("email"),
-            formUser.get("password")
+            formUser.get("password"),
+            formUser.get("telefono"),
+            formUser.get("sexo")
         )
 
-        if(user.rol === "cliente") {
+        if (user.rol === "USUARIO") {
             const registro = new Registro(user);
-            apiRegistro(registro);
+            asignarModalMensaje(apiRegistro(registro));
         }
         else {
 
-            // Registrar empresa
-
-            titulo.textContent = "Registrar empresa";
-
-            // Remover formulario usuario e imagen
-
+            // Remover imagen y formulario usuario
             document.getElementById("marcoDerecho").querySelector("img").remove();
-            
             formU.remove();
 
-            // Inyectar formulario empresa
+            // Registrar empresa
+            registrarEmpresa(marcoIzquierdo, user);
 
-            marcoIzquierdo.insertAdjacentHTML("beforeend", formCrearEmpresa());
-
-            const formEmp = document.getElementById("formEmpresa");
-
-            formEmp.addEventListener("submit", (e) => {
-                e.preventDefault();
-            
-                const formEmpresa = new FormData(formEmp);
-            
-                const empresa = new Empresa(
-                    formEmpresa.get("nit"),
-                    capitalizar(formEmpresa.get("nombre")),
-                    formEmpresa.get("direccion")
-                );
-
-                user.empresa = empresa.nit;
-            
-                const registro = new Registro(user, empresa);
-                apiRegistro(registro);
-            
-            }) 
         }
 
     }
@@ -116,5 +97,3 @@ formUser.addEventListener("submit", (e) => {
     }
 
 })
-
-/*  */

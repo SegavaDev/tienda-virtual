@@ -43,7 +43,7 @@ public class Rol implements Serializable {
     }
 
     public void setPermisos() {
-        this.permisos = nombre.getPermiso();
+        this.permisos = this.nombre.getPermiso();
     }
     
 }

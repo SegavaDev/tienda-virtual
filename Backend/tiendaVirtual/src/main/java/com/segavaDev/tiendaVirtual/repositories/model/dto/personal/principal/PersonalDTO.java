@@ -2,6 +2,7 @@ package com.segavaDev.tiendaVirtual.repositories.model.dto.personal.principal;
 
 import com.segavaDev.tiendaVirtual.repositories.enums.Estados;
 import com.segavaDev.tiendaVirtual.repositories.model.dto.empresa.EmpresaDTO;
+import com.segavaDev.tiendaVirtual.repositories.model.dto.persona.PersonaDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

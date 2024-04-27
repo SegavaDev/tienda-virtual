@@ -3,12 +3,15 @@ package com.segavaDev.tiendaVirtual.repositories.entities;
 import java.io.Serializable;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -23,15 +26,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "Usuarios")
 public abstract class Persona implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
-    private long id;
+    private long idPersona;
 
-    @Setter(AccessLevel.NONE)
     @Column(unique = true, nullable = false)
     @NotNull
     private long cedula;
@@ -51,6 +55,7 @@ public abstract class Persona implements Serializable {
     
     private String s_apellido;
 
+    @NotNull(message = "Se requiere un rol")
     @ManyToOne
     @JoinColumn(
         name = "rol_id"
@@ -60,7 +65,6 @@ public abstract class Persona implements Serializable {
     @Email(message = "El formato de email no es correcto")
     @Column(unique = true, nullable = false)
     @NotBlank(message = "Email requerido")
-    @NotNull(message = "Email requerido")
     @NotEmpty(message = "Email requerido")
     private String email;
 

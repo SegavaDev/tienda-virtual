@@ -12,8 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.segavaDev.tiendaVirtual.repositories.entities.Personal;
-import com.segavaDev.tiendaVirtual.repositories.interfaces.PersonalRepository;
+import com.segavaDev.tiendaVirtual.repositories.entities.Persona;
+import com.segavaDev.tiendaVirtual.repositories.interfaces.UsuarioRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -21,13 +21,15 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class JWTUserDetailService implements UserDetailsService {
 
-	private final PersonalRepository personalRepository;
+	private final UsuarioRepository usuarioRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Optional<Personal> personal = this.personalRepository.findByEmail(username);
-		if(personal.isPresent()) {
-			return personal
+
+		Optional<Persona> persona = this.usuarioRepository.findByEmail(username);
+
+		if(persona.isPresent()) {
+			return persona
 				.map(usuario -> {
 					System.out.println("Rol " + usuario.getRol().getNombre().name());
 					Set<GrantedAuthority> authorities = new HashSet<>();
@@ -39,7 +41,7 @@ public class JWTUserDetailService implements UserDetailsService {
 		}
 
 		else {
-			return null;
+			throw new UsernameNotFoundException("Usuario no encontrado con username: " + username);
 		}
 	}
 }

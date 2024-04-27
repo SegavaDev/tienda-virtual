@@ -5,8 +5,8 @@ import java.util.Arrays;
 public enum Roles {
     GERENTE("Todos los permisos"),
     ADMINISTRADOR("Todos los permisos excepto modificar gerente"),
-    USUARIO("Ver productos"),
-    CAJA("Crear, eliminar, modificar y ver (Productos, ventas)");
+    CAJA("Crear y ver (ventas, facturas, clientes(usuarios)), ver inventario"),
+    USUARIO("Ver productos en tienda virtual"); 
 
     private String permiso;
 

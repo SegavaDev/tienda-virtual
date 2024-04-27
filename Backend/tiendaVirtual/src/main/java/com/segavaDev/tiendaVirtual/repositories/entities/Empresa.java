@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,8 +29,8 @@ public class Empresa implements Serializable {
     private long id;
 
     @Column(unique = true, nullable = false)
-    @Setter(AccessLevel.NONE)
-    private long nit;
+    @NotNull
+    private String nit;
 
     @Column(unique = true, nullable = false)
     private String nombre;

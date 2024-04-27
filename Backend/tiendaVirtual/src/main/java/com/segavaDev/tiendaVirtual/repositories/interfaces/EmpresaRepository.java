@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
 
-    Optional<Empresa> findByNit(long nit);
+    Optional<Empresa> findByNit(String nit);
 
     Optional<Empresa> findByNombre(String nombre);
 

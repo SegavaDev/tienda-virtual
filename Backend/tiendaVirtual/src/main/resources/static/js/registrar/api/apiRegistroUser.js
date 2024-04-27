@@ -1,4 +1,4 @@
-const url = "http://127.0.0.1:3001/api/v1/registrarse";
+const url = `${window.location.origin}/api/v1/public/registrarse`;
 
 export async function apiRegistro(registro) {
     const req = await fetch(url, {
@@ -12,5 +12,5 @@ export async function apiRegistro(registro) {
     const res = await req.json();
     const data = res;
 
-    console.log(data);
+    return data;
 }

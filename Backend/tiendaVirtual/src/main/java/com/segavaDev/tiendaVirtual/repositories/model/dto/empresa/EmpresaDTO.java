@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 
 public class EmpresaDTO {
 
-    private long nit;
+    private String nit;
 
     private String nombre;
 
