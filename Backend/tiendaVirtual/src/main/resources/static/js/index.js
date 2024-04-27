@@ -1,4 +1,5 @@
-import { inyectarFooter } from "./template_global/Footer.js";
+import { lanzadorGlobal } from "./utileria/lanzador.js";
 
-// Inyectar footer
-inyectarFooter();
+
+// lanzador footer, modo oscuro/light
+lanzadorGlobal();

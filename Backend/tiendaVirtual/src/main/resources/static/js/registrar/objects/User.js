@@ -9,6 +9,8 @@ class User {
     email;
     passWord;
     empresa;
+    telefono;
+    sexo;
 
     constructor(
         cedula,
@@ -19,6 +21,8 @@ class User {
         rol,
         email,
         passWord,
+        telefono,
+        sexo,
         empresa = null
     ) {
 
@@ -30,6 +34,8 @@ class User {
         this.rol = rol,
         this.email = email,
         this.passWord = passWord,
+        this.telefono = telefono,
+        this.sexo = sexo,
         this.empresa = empresa
     }
 

@@ -19,11 +19,11 @@ export function inyectarFooter() {
             bottom: 0;
         `;
 
-    if(window.innerWidth <= 767) {
+    if (window.innerWidth <= 767) {
         footer.style.fontSize = "2vw";
 
         const a = footer.querySelectorAll("a")[2];
-        a.style = 
+        a.style =
             `
                 display: flex;
                 aling-items: center;
@@ -38,7 +38,7 @@ export function inyectarFooter() {
         )
     }
     else {
-        
+
     }
 
 }

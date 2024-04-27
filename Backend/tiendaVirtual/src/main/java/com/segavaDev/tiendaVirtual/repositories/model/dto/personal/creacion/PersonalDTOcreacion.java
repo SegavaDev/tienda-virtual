@@ -1,5 +1,7 @@
 package com.segavaDev.tiendaVirtual.repositories.model.dto.personal.creacion;
 
+import com.segavaDev.tiendaVirtual.repositories.model.dto.persona.PersonaDTOcreacion;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

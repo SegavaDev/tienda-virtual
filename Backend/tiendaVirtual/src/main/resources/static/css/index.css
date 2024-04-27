@@ -3,7 +3,11 @@
 :root {
 
     --bg-color: #01005E;
-    --bg-white: rgb(255,255,255);
+    --bg-light: rgb(255, 255, 255);
+    --bg-dark: #070F2B;
+    --color-font-light: black;
+    --color-font-dark: #17B794;
+    --font-white: rgb(255, 255, 255);
     --font-principal: "Open Sans", sans-serif;
 }
 
@@ -13,35 +17,43 @@
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    background-color: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--bg-dark);
+}
+
 .marco {
     width: 100%;
-    height: 100vh;
-    background-color: var(--bg-white);
+    min-height: 100vh;
     position: relative;
+    overflow-y: auto;
 
-        .marco__izquierda {
-            min-height: 50vh;
-        }
+    .marco__izquierda {
+        min-height: 70vh;
+    }
 
-        .marco__derecha {
-            min-height: 45vh;
-        }
+    .marco__derecha {
+        min-height: 20vh;
+    }
 
-        .marco__titulo {
-            font: var(--font-principal);
-            font-size: 5vw;
-        }
+    .marco__titulo {
+        font: var(--font-principal);
+        font-size: 5vw;
+    }
 
-        .marco__titulo2 {
-            font: var(--font-principal);
-            font-size: 3vw;
-        }
+    .marco__titulo2 {
+        font: var(--font-principal);
+        font-size: 3vw;
+    }
 
-        .marco__subTitulo {
-            font: var(--font-principal);
-            font-size: 1.5vw;
-            text-align: center;
-        }
+    .marco__subTitulo {
+        font: var(--font-principal);
+        font-size: 1.5vw;
+        text-align: center;
+    }
 }
 
 .btnLR {

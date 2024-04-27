@@ -1,3 +1,12 @@
+@media (min-width: 768px) {
+    .marco {
+        form  {
+            overflow-y: auto;
+        }
+        
+    }
+}
+
 @media (max-width: 768px) {
     .marco {
         .marco__titulo {
@@ -16,6 +25,18 @@
 
 @media (max-width: 767px) {
     .marco {
+        display: grid;
+
+        form  {
+            overflow-y: scroll;
+        }
+
+        .marco__derecha > img {
+            width: 25vw;
+            align-self: baseline;
+            justify-self: center;
+        }
+
         .marco__titulo {
             font-size: 10vw;
         }
@@ -27,6 +48,11 @@
         .marco__subTitulo {
             font-size: 4vw;
         }
+    }
+
+    .btnDarkLight {
+        width: 40px;
+        height: 40px;
     }
 
 }

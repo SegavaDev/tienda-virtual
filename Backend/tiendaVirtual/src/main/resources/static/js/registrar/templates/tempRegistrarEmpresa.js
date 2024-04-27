@@ -1,12 +1,12 @@
 export function formCrearEmpresa() {
     const template = //html
         `
-        <form class="row align-items-center justify-content-center" id="formEmpresa">
+        <form class="row align-items-center justify-content-center" method="post" id="formEmpresa">
 
             <div class="row col-10 align-items-center justify-content-center gap-2 ">
                 <div class="input-group flex-nowrap inputsData">
                     <span class="input-group-text">&#x1f3ed;&#xfe0e;</span>
-                    <input type="number" class="form-control" placeholder="Nit" name="nit" required>
+                    <input type="text" class="form-control" placeholder="Nit" name="nit" required>
                 </div>
 
                 <div class="input-group flex-nowrap inputsData">
@@ -31,8 +31,8 @@ export function formCrearEmpresa() {
         </form>
         `
 
-        const imagen = `<img src="./assets/registrar negocio.png" alt="Market virtual" class="img-fluid"></img>`;
-        document.getElementById("marcoDerecho").insertAdjacentHTML("beforeend", imagen);
+    const imagen = `<img src="./assets/registrar negocio.png" alt="Market virtual" class="img-fluid"></img>`;
+    document.getElementById("marcoDerecho").insertAdjacentHTML("beforeend", imagen);
 
-        return template;
+    return template;
 }
