@@ -20,7 +20,14 @@
 ---
 
 ## ✅ Estado:
-=> **En proceso**
+=> **En proceso ( éste repositorio solo muestra un login funcional, la continuación del proyecto se realiza en un repositorio privado, si desea conocer sobre los avances del mismo, no dude en escribir al email segava.dev@gmail.com )**
+
+---
+|No.| 📦 Módulo | 🚩 Estado | 🚧 Pendiente |
+|:-:|:---------:|:---------:|:--------------:|
+|1  |Login      |En proceso |Mejoras visuales|
+
+---
 
 ## 📑 Pasos:
 
@@ -80,9 +87,6 @@
 
 1. **URL's navegador web:**
     * http://localhost:3001
-
-    * Opcional URL Swagger:
-        http://localhost:3001/swagger-ui/swagger-ui/index.html
 
 
 ---
