@@ -22,7 +22,6 @@
 ## ✅ Estado:
 => **En proceso ( éste repositorio solo muestra un login funcional, la continuación del proyecto se realiza en un repositorio privado, si desea conocer sobre los avances del mismo, no dude en escribir al email segava.dev@gmail.com )**
 
----
 |No.| 📦 Módulo | 🚩 Estado | 🚧 Pendiente |
 |:-:|:---------:|:---------:|:--------------:|
 |1  |Login      |En proceso |Mejoras visuales|
