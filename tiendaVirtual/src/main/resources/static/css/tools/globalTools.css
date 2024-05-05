@@ -1,0 +1,34 @@
+:root {
+
+    --bg-color: #01005E;
+    --bg-light: rgb(255, 255, 255);
+    --bg-dark: #070F2B;
+    --color-font-light: black;
+    --color-font-dark: #17B794;
+    --font-white: rgb(255, 255, 255);
+    --font-principal: "Open Sans", sans-serif;
+}
+
+.modoOSBri {
+    background-color: var(--bg-light);
+    color: var(--color-font-light);
+}
+
+.btnDarkLight {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    top: 2%;
+    right: 2%;
+    z-index: 3;
+}
+
+.marco__dark {
+    background-color: var(--bg-dark);
+    color: var(--color-font-dark);
+
+    .marco__titulo,
+    .marco__titulo2 {
+        color: var(--font-white);
+    }
+}
