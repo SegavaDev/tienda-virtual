@@ -1,9 +1,0 @@
-@media (max-width: 768px) {
-    .btnsRegEmpresa {
-        flex-direction: column;
-    }
-
-    .marco__derecha > img {
-        object-fit: scale-down;
-    }
-}
